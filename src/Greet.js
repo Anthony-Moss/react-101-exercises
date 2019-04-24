@@ -1,9 +1,6 @@
 import React from 'react';
 import { isNumber } from 'util';
 
-function lowerName(aName) {
-    return aName.toLowerCase();
-}
 // function used to swap letter correctly in transl33t function
 let leetDictionary = {
     A: 4,
@@ -15,13 +12,6 @@ let leetDictionary = {
     T: 7,
     }
 
-    // A first goes to a 4
-    // 4 then would need to go back to A
-
-function getKeyByValue(object, value) {
-    return Object.keys(object).find(key => object[key] === value)
-}
-console.log(getKeyByValue(leetDictionary, 4))
 
 function transl33t(originalString) {
     let result = '';
@@ -72,7 +62,7 @@ class Greet extends React.Component {
         return (    
             <div>
                 <h1>
-                    Hello {lowerName(this.props.whom)}
+                    Hello {(this.props.whom)}
                 </h1>
                 <h2>
                     Press the button and your name will change {this.state.whom}
@@ -83,6 +73,12 @@ class Greet extends React.Component {
                 <button 
                     onClick={this._cyphered}
                 >Cipher</button>
+                <button 
+                    onClick={this._lowerCase}
+                >Lower Case</button>
+                <button 
+                    onClick={this._upperCase}
+                >Upper Case</button>
             </div>
         )
     }
@@ -90,7 +86,13 @@ class Greet extends React.Component {
 
     _lowerCase = () => {
         this.setState({
-            whom: (this.state).toLowerCase()
+            whom: (this.state.whom).toLowerCase()
+        });
+    }
+
+    _upperCase = () => {
+        this.setState({
+            whom: (this.state.whom).toUpperCase()
         });
     }
 
